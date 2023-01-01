@@ -6,13 +6,14 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "local": "node index"
+    "local:start": "nodemon index"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "axios": "^1.2.1",
     "chalk": "^2.4.2",
+    "nodemon": "^2.0.20",
     "uuid": "^9.0.0"
   }
 }

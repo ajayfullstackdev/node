@@ -1,46 +1,49 @@
-import axios from "axios";
+import http from "http";
+import { URL } from "url";
 import fs from "fs";
 
-const readFile = (fileName) => {
-  return new Promise((resolve, reject) => {
-    fs.readFile(fileName, "utf-8", (err, data) => {
-      if (err) return reject("File not Present");
-
-      resolve(data);
-    });
-  });
-};
-
-const writeFile = (fileName, data) => {
+const readFile = (pathName) => {
   return new Promise((res, rej) => {
-    fs.writeFile(fileName, data, (err) => {
+    fs.readFile(pathName, "utf-8", (err, data) => {
       if (err) {
-        return rej("Creation of file failed !");
+        return rej("File doesn't exist !");
       }
 
-      res("Successfully wrote!");
+      res(data);
     });
   });
 };
 
-const processPosts = async (idPath, postPath, commentsPath) => {
+const server = http.createServer(async (req, res) => {
   try {
-    const id = await readFile(idPath);
+    const instanceOfURL = new URL(req.url, "http://localhost:8000/");
+    console.log(instanceOfURL);
 
-    let postData = await axios.get(
-      `https://jsonplaceholder.typicode.com/posts/${id}`
-    );
+    if (instanceOfURL.pathname === "/users") {
+      const id = instanceOfURL.searchParams.get("id");
+      let jsonData = await readFile("./data/users.json");
 
-    await writeFile(postPath, postData.data.title);
+      if (id !== null) {
+        jsonData = JSON.parse(jsonData).find((ele) => ele.id == id);
 
-    let commentsData = await axios.get(
-      `https://jsonplaceholder.typicode.com/comments/${id}`
-    );
+        jsonData = jsonData ? JSON.stringify(jsonData) : null;
+      }
 
-    await writeFile(commentsPath, commentsData.data.body);
+      return res.end(jsonData);
+    }
+    res.end("Server says Hello !");
   } catch (err) {
-    console.log(err);
+    res.writeHead(500);
+    res.end("Server crashed, things not working as expected.");
   }
-};
+});
 
-processPosts("./data/id.txt", "./data/post.txt", "./data/comments.txt");
+server.listen(8000, "127.0.0.1", () => {
+  console.log("Listening to the port 8000...");
+});
+
+// 400 Bad request
+// 401 Unauthorized
+// 403 Forbidden
+// 404 Not found
+// 500 Internal server error
