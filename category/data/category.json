@@ -1,0 +1,310 @@
+[
+  {
+    "id": 1,
+    "name": "Clothes",
+    "image": "https://api.lorem.space/image/fashion?w=640&h=480&r=8766",
+    "creationAt": "2023-01-06T22:43:51.000Z",
+    "updatedAt": "2023-01-06T22:43:51.000Z"
+  },
+  {
+    "id": 2,
+    "name": "Electronics",
+    "image": "https://api.lorem.space/image/watch?w=640&h=480&r=9863",
+    "creationAt": "2023-01-06T22:43:51.000Z",
+    "updatedAt": "2023-01-06T22:43:51.000Z"
+  },
+  {
+    "id": 3,
+    "name": "Furniture",
+    "image": "https://api.lorem.space/image/furniture?w=640&h=480&r=5655",
+    "creationAt": "2023-01-06T22:43:51.000Z",
+    "updatedAt": "2023-01-06T22:43:51.000Z"
+  },
+  {
+    "id": 4,
+    "name": "Shoes",
+    "image": "https://api.lorem.space/image/shoes?w=640&h=480&r=2427",
+    "creationAt": "2023-01-06T22:43:51.000Z",
+    "updatedAt": "2023-01-06T22:43:51.000Z"
+  },
+  {
+    "id": 5,
+    "name": "Others",
+    "image": "https://api.lorem.space/image?w=640&h=480&r=8675",
+    "creationAt": "2023-01-06T22:43:51.000Z",
+    "updatedAt": "2023-01-06T22:43:51.000Z"
+  },
+  {
+    "id": 6,
+    "name": "Some Category",
+    "image": "https://placeimg.com/640/480/any",
+    "creationAt": "2023-01-06T23:06:24.000Z",
+    "updatedAt": "2023-01-06T23:06:24.000Z"
+  },
+  {
+    "id": 7,
+    "name": "Some Category",
+    "image": "https://placeimg.com/640/480/any",
+    "creationAt": "2023-01-06T23:28:31.000Z",
+    "updatedAt": "2023-01-06T23:28:31.000Z"
+  },
+  {
+    "id": 8,
+    "name": "Updated Category",
+    "image": "https://placeimg.com/640/480/any",
+    "creationAt": "2023-01-06T23:29:13.000Z",
+    "updatedAt": "2023-01-06T23:29:14.000Z"
+  },
+  {
+    "id": 9,
+    "name": "Updated Category",
+    "image": "https://placeimg.com/640/480/any",
+    "creationAt": "2023-01-06T23:32:04.000Z",
+    "updatedAt": "2023-01-06T23:32:05.000Z"
+  },
+  {
+    "id": 10,
+    "name": "Updated Category",
+    "image": "https://placeimg.com/640/480/any",
+    "creationAt": "2023-01-06T23:43:29.000Z",
+    "updatedAt": "2023-01-06T23:43:30.000Z"
+  },
+  {
+    "id": 11,
+    "name": "Some Category",
+    "image": "https://placeimg.com/640/480/any",
+    "creationAt": "2023-01-06T23:43:35.000Z",
+    "updatedAt": "2023-01-06T23:43:35.000Z"
+  },
+  {
+    "id": 12,
+    "name": "Some Category",
+    "image": "https://placeimg.com/640/480/any",
+    "creationAt": "2023-01-06T23:56:35.000Z",
+    "updatedAt": "2023-01-06T23:56:35.000Z"
+  },
+  {
+    "id": 13,
+    "name": "Some Category",
+    "image": "https://placeimg.com/640/480/any",
+    "creationAt": "2023-01-07T00:02:15.000Z",
+    "updatedAt": "2023-01-07T00:02:15.000Z"
+  },
+  {
+    "id": 14,
+    "name": "Some Category",
+    "image": "https://placeimg.com/640/480/any",
+    "creationAt": "2023-01-07T00:05:12.000Z",
+    "updatedAt": "2023-01-07T00:05:12.000Z"
+  },
+  {
+    "id": 15,
+    "name": "Some Category",
+    "image": "https://placeimg.com/640/480/any",
+    "creationAt": "2023-01-07T00:06:17.000Z",
+    "updatedAt": "2023-01-07T00:06:17.000Z"
+  },
+  {
+    "id": 16,
+    "name": "Some Category",
+    "image": "https://placeimg.com/640/480/any",
+    "creationAt": "2023-01-07T00:07:28.000Z",
+    "updatedAt": "2023-01-07T00:07:28.000Z"
+  },
+  {
+    "id": 17,
+    "name": "Some Category",
+    "image": "https://placeimg.com/640/480/any",
+    "creationAt": "2023-01-07T00:07:52.000Z",
+    "updatedAt": "2023-01-07T00:07:52.000Z"
+  },
+  {
+    "id": 18,
+    "name": "Updated Category",
+    "image": "https://placeimg.com/640/480/any",
+    "creationAt": "2023-01-07T00:08:20.000Z",
+    "updatedAt": "2023-01-07T00:08:21.000Z"
+  },
+  {
+    "id": 19,
+    "name": "Some Category",
+    "image": "https://placeimg.com/640/480/any",
+    "creationAt": "2023-01-07T00:08:34.000Z",
+    "updatedAt": "2023-01-07T00:08:34.000Z"
+  },
+  {
+    "id": 21,
+    "name": "Updated Category",
+    "image": "https://placeimg.com/640/480/any",
+    "creationAt": "2023-01-07T00:15:26.000Z",
+    "updatedAt": "2023-01-07T00:15:27.000Z"
+  },
+  {
+    "id": 22,
+    "name": "Some Category",
+    "image": "https://placeimg.com/640/480/any",
+    "creationAt": "2023-01-07T00:17:12.000Z",
+    "updatedAt": "2023-01-07T00:17:12.000Z"
+  },
+  {
+    "id": 24,
+    "name": "New Category",
+    "image": "https://placeimg.com/640/480/any",
+    "creationAt": "2023-01-07T01:42:36.000Z",
+    "updatedAt": "2023-01-07T01:42:36.000Z"
+  },
+  {
+    "id": 25,
+    "name": "un nuevo nombre 4.0",
+    "image": "https://placeimg.com/640/480/any",
+    "creationAt": "2023-01-07T01:50:02.000Z",
+    "updatedAt": "2023-01-07T01:54:16.000Z"
+  },
+  {
+    "id": 26,
+    "name": "Updated Category",
+    "image": "https://placeimg.com/640/480/any",
+    "creationAt": "2023-01-07T02:05:03.000Z",
+    "updatedAt": "2023-01-07T02:05:04.000Z"
+  },
+  {
+    "id": 27,
+    "name": "Some Category",
+    "image": "https://placeimg.com/640/480/any",
+    "creationAt": "2023-01-07T03:10:28.000Z",
+    "updatedAt": "2023-01-07T03:10:28.000Z"
+  },
+  {
+    "id": 28,
+    "name": "Some Category",
+    "image": "https://placeimg.com/640/480/any",
+    "creationAt": "2023-01-07T03:10:36.000Z",
+    "updatedAt": "2023-01-07T03:10:36.000Z"
+  },
+  {
+    "id": 29,
+    "name": "Some Category",
+    "image": "https://placeimg.com/640/480/any",
+    "creationAt": "2023-01-07T03:11:27.000Z",
+    "updatedAt": "2023-01-07T03:11:27.000Z"
+  },
+  {
+    "id": 30,
+    "name": "Some Category",
+    "image": "https://placeimg.com/640/480/any",
+    "creationAt": "2023-01-07T03:12:02.000Z",
+    "updatedAt": "2023-01-07T03:12:02.000Z"
+  },
+  {
+    "id": 31,
+    "name": "Some Category",
+    "image": "https://placeimg.com/640/480/any",
+    "creationAt": "2023-01-07T03:12:27.000Z",
+    "updatedAt": "2023-01-07T03:12:27.000Z"
+  },
+  {
+    "id": 32,
+    "name": "Some Category",
+    "image": "https://placeimg.com/640/480/any",
+    "creationAt": "2023-01-07T03:12:46.000Z",
+    "updatedAt": "2023-01-07T03:12:46.000Z"
+  },
+  {
+    "id": 33,
+    "name": "Some Category",
+    "image": "https://placeimg.com/640/480/any",
+    "creationAt": "2023-01-07T03:13:02.000Z",
+    "updatedAt": "2023-01-07T03:13:02.000Z"
+  },
+  {
+    "id": 34,
+    "name": "Some Category",
+    "image": "https://placeimg.com/640/480/any",
+    "creationAt": "2023-01-07T03:15:17.000Z",
+    "updatedAt": "2023-01-07T03:15:17.000Z"
+  },
+  {
+    "id": 35,
+    "name": "Some Category",
+    "image": "https://placeimg.com/640/480/any",
+    "creationAt": "2023-01-07T03:15:35.000Z",
+    "updatedAt": "2023-01-07T03:15:35.000Z"
+  },
+  {
+    "id": 36,
+    "name": "Some Category",
+    "image": "https://placeimg.com/640/480/any",
+    "creationAt": "2023-01-07T03:15:44.000Z",
+    "updatedAt": "2023-01-07T03:15:44.000Z"
+  },
+  {
+    "id": 37,
+    "name": "Some Category",
+    "image": "https://placeimg.com/640/480/any",
+    "creationAt": "2023-01-07T03:20:37.000Z",
+    "updatedAt": "2023-01-07T03:20:37.000Z"
+  },
+  {
+    "id": 38,
+    "name": "Some Category",
+    "image": "https://placeimg.com/640/480/any",
+    "creationAt": "2023-01-07T03:28:53.000Z",
+    "updatedAt": "2023-01-07T03:28:53.000Z"
+  },
+  {
+    "id": 39,
+    "name": "Some Category",
+    "image": "https://placeimg.com/640/480/any",
+    "creationAt": "2023-01-07T03:45:09.000Z",
+    "updatedAt": "2023-01-07T03:45:09.000Z"
+  },
+  {
+    "id": 40,
+    "name": "Some Category",
+    "image": "https://placeimg.com/640/480/any",
+    "creationAt": "2023-01-07T03:50:59.000Z",
+    "updatedAt": "2023-01-07T03:50:59.000Z"
+  },
+  {
+    "id": 41,
+    "name": "Some Category",
+    "image": "https://placeimg.com/640/480/any",
+    "creationAt": "2023-01-07T03:51:11.000Z",
+    "updatedAt": "2023-01-07T03:51:11.000Z"
+  },
+  {
+    "id": 42,
+    "name": "Some Category",
+    "image": "https://placeimg.com/640/480/any",
+    "creationAt": "2023-01-07T03:51:25.000Z",
+    "updatedAt": "2023-01-07T03:51:25.000Z"
+  },
+  {
+    "id": 43,
+    "name": "Some Category",
+    "image": "https://placeimg.com/640/480/any",
+    "creationAt": "2023-01-07T03:51:37.000Z",
+    "updatedAt": "2023-01-07T03:51:37.000Z"
+  },
+  {
+    "id": 44,
+    "name": "Some Category",
+    "image": "https://placeimg.com/640/480/any",
+    "creationAt": "2023-01-07T03:52:12.000Z",
+    "updatedAt": "2023-01-07T03:52:12.000Z"
+  },
+  {
+    "id": 45,
+    "name": "Some Category",
+    "image": "https://placeimg.com/640/480/any",
+    "creationAt": "2023-01-07T03:52:44.000Z",
+    "updatedAt": "2023-01-07T03:52:44.000Z"
+  },
+  {
+    "id": 46,
+    "name": "Some Category",
+    "image": "https://placeimg.com/640/480/any",
+    "creationAt": "2023-01-07T03:53:51.000Z",
+    "updatedAt": "2023-01-07T03:53:51.000Z"
+  }
+]
