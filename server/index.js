@@ -9,10 +9,24 @@ const server = http.createServer(async (req, res) => {
     // GET Methods
     if (req.method === "GET" && instanceOfURL.pathname === "/products") {
       const id = instanceOfURL.searchParams.get("id");
+      let limit = instanceOfURL.searchParams.get("limit");
+      let page = instanceOfURL.searchParams.get("page");
+
       let jsonData = JSON.parse(await readFile("./data/products.json"));
 
       if (id !== null) {
         jsonData = jsonData.find((ele) => ele.id == id);
+      }
+
+      if (limit != null && page != null) {
+        limit = Number(limit);
+        page = Number(page);
+
+        const productInfo = JSON.parse(await readFile("./data/products.json"));
+
+        const startIndex = limit * (page - 1);
+
+        jsonData = productInfo.slice(startIndex, startIndex + limit);
       }
 
       res.setHeader("Access-Control-Allow-Origin", "*");
