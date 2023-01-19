@@ -54,6 +54,10 @@ app.post("/product", (req, res) => {
     });
 });
 
+const item = await Product.find({ title: "mac book" });
+
+console.log("item: ", item);
+
 app.listen(4000, () => {
   console.log("Server running at 4k");
 });
