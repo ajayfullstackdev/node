@@ -1,5 +1,5 @@
 import Product from "../models/productModel.js";
-import { cleanUp } from "../utils/cleanUp.js";
+import { cleanUp, whiteListFields } from "../utils/common.js";
 
 const insertProduct = (req, res) => {
   const { title, price, category } = req.body;
@@ -26,11 +26,30 @@ const insertProduct = (req, res) => {
 
 const getProducts = async (req, res) => {
   try {
-    const query = cleanUp(req.query);
+    console.log(req.query);
+    let query = cleanUp(req.query);
+    let findQuery = whiteListFields(query);
 
-    console.log(query);
+    let queryString = Product.find(findQuery);
 
-    const data = await Product.find(query);
+    // sorting
+    if (query.sort) {
+      queryString = queryString.sort(query.sort);
+    }
+
+    // pagination
+    if (query.limit && query.page) {
+      queryString = queryString
+        .skip(query.limit * (query.page - 1))
+        .limit(query.limit);
+    }
+
+    // Fields
+    if (query.fields) {
+      queryString = queryString.select(query.fields);
+    }
+
+    const data = await queryString;
 
     res.json({
       status: "success",
