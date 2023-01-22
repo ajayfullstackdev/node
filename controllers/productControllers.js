@@ -1,5 +1,6 @@
 import Product from "../models/productModel.js";
-import { cleanUp, whiteListFields } from "../utils/common.js";
+// import AdvancedFiltering from "../utils/advancedFiltering.js";
+import AdvancedFiltering from "../utils/advancedFilteringFunction.js";
 
 const insertProduct = (req, res) => {
   const { title, price, category } = req.body;
@@ -27,29 +28,14 @@ const insertProduct = (req, res) => {
 const getProducts = async (req, res) => {
   try {
     console.log(req.query);
-    let query = cleanUp(req.query);
-    let findQuery = whiteListFields(query);
 
-    let queryString = Product.find(findQuery);
+    const queryStringFinal = new AdvancedFiltering(req.query, Product.find())
+      .find()
+      .sort()
+      .pagination()
+      .limitFields();
 
-    // sorting
-    if (query.sort) {
-      queryString = queryString.sort(query.sort);
-    }
-
-    // pagination
-    if (query.limit && query.page) {
-      queryString = queryString
-        .skip(query.limit * (query.page - 1))
-        .limit(query.limit);
-    }
-
-    // Fields
-    if (query.fields) {
-      queryString = queryString.select(query.fields);
-    }
-
-    const data = await queryString;
+    const data = await queryStringFinal.queryString;
 
     res.json({
       status: "success",
