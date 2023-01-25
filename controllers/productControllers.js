@@ -2,27 +2,13 @@ import Product from "../models/productModel.js";
 // import AdvancedFiltering from "../utils/advancedFiltering.js";
 import AdvancedFiltering from "../utils/advancedFilteringFunction.js";
 
-const insertProduct = (req, res) => {
-  const { title, price, category } = req.body;
-
-  const productItem = new Product({
-    title,
-    price,
-    category,
+const insertProduct = async (req, res) => {
+  const productItem = await Product.create(req.body);
+  res.status(201).json({
+    status: "success",
+    message: "successfully added",
+    data: productItem,
   });
-
-  productItem
-    .save()
-    .then((data) => {
-      console.log(data);
-      res.status(201).json({
-        status: "success",
-        message: "successfully added",
-      });
-    })
-    .catch((err) => {
-      console.log(err, "Error");
-    });
 };
 
 const getProducts = async (req, res) => {
@@ -67,4 +53,51 @@ const getProductById = async (req, res) => {
   }
 };
 
-export { insertProduct, getProducts, getProductById };
+const updateProduct = async (req, res) => {
+  const updatedItem = await Product.findByIdAndUpdate(req.params.id, req.body, {
+    new: true,
+  });
+
+  res.status(201).json({
+    status: "success",
+    message: "successfully updated",
+    data: updatedItem,
+  });
+};
+
+const updateProductDetails = async (req, res) => {
+  // const updatedItems = await Product.findOneAndUpdate(req.query, req.body, {
+  //   new: true,
+  // });
+
+  const updatedItems = await Product.updateMany(req.query, req.body);
+
+  res.status(201).json({
+    status: "success",
+    message: "successfully updated",
+    data: updatedItems,
+  });
+};
+
+const deleteProduct = async (req, res) => {
+  try {
+    const productDeleted = await Product.deleteMany(req.query);
+
+    res.status(200).json({
+      status: "success",
+      message: "successfully deleted",
+      data: productDeleted,
+    });
+  } catch (err) {
+    next(err);
+  }
+};
+
+export {
+  insertProduct,
+  getProducts,
+  getProductById,
+  updateProduct,
+  updateProductDetails,
+  deleteProduct,
+};
