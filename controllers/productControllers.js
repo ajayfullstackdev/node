@@ -1,59 +1,52 @@
 import Product from "../models/productModel.js";
 // import AdvancedFiltering from "../utils/advancedFiltering.js";
 import AdvancedFiltering from "../utils/advancedFilteringFunction.js";
+import catchErrorAsync from "../utils/catchErrorAsync.js";
+import ApiErrorModel from "../utils/apiErrorModel.js";
 
-const insertProduct = async (req, res) => {
+const insertProduct = catchErrorAsync(async (req, res) => {
   const productItem = await Product.create(req.body);
   res.status(201).json({
     status: "success",
     message: "successfully added",
     data: productItem,
   });
-};
+});
 
-const getProducts = async (req, res) => {
-  try {
-    console.log(req.query);
+const getProducts = catchErrorAsync(async (req, res) => {
+  console.log(req.query);
 
-    const queryStringFinal = new AdvancedFiltering(req.query, Product.find())
-      .find()
-      .sort()
-      .pagination()
-      .limitFields();
+  const queryStringFinal = new AdvancedFiltering(req.query, Product.find())
+    .find()
+    .sort()
+    .pagination()
+    .limitFields();
 
-    const data = await queryStringFinal.queryString;
+  const data = await queryStringFinal.queryString;
 
-    res.json({
-      status: "success",
-      length: data.length,
-      data,
-    });
-  } catch (err) {
-    res.json({
-      status: "error",
-      message: err.message,
-    });
-  }
-};
+  res.json({
+    status: "success",
+    length: data.length,
+    data,
+  });
+});
 
 // Find by id
 
-const getProductById = async (req, res) => {
-  try {
-    const data = await Product.findById(req.params.id);
-    res.json({
-      status: "success",
-      data,
-    });
-  } catch (err) {
-    res.status(500).json({
-      status: "error",
-      message: err.message,
-    });
-  }
-};
+const getProductById = catchErrorAsync(async (req, res, next) => {
+  const data = await Product.findById(req.params.id);
 
-const updateProduct = async (req, res) => {
+  if (!data) {
+    return next(new ApiErrorModel("No Product available", 404));
+  }
+
+  res.json({
+    status: "success",
+    data,
+  });
+});
+
+const updateProduct = catchErrorAsync(async (req, res) => {
   const updatedItem = await Product.findByIdAndUpdate(req.params.id, req.body, {
     new: true,
   });
@@ -63,9 +56,9 @@ const updateProduct = async (req, res) => {
     message: "successfully updated",
     data: updatedItem,
   });
-};
+});
 
-const updateProductDetails = async (req, res) => {
+const updateProductDetails = catchErrorAsync(async (req, res) => {
   // const updatedItems = await Product.findOneAndUpdate(req.query, req.body, {
   //   new: true,
   // });
@@ -77,21 +70,17 @@ const updateProductDetails = async (req, res) => {
     message: "successfully updated",
     data: updatedItems,
   });
-};
+});
 
-const deleteProduct = async (req, res) => {
-  try {
-    const productDeleted = await Product.deleteMany(req.query);
+const deleteProduct = catchErrorAsync(async (req, res) => {
+  const productDeleted = await Product.deleteMany(req.query);
 
-    res.status(200).json({
-      status: "success",
-      message: "successfully deleted",
-      data: productDeleted,
-    });
-  } catch (err) {
-    next(err);
-  }
-};
+  res.status(200).json({
+    status: "success",
+    message: "successfully deleted",
+    data: productDeleted,
+  });
+});
 
 export {
   insertProduct,

@@ -1,14 +1,16 @@
+import "./config.js";
+
 import express from "express";
 import mongoose from "mongoose";
-import globalErrorHandling from "./controllers/errorController.js";
 import router from "./routes/productRoutes.js";
+import globalErrorHandling from "./controllers/errorController.js";
 
 mongoose.set("strictQuery", false);
 
+const DBConnectionString = process.env.DB_CONNECTION_STRING;
+
 mongoose
-  .connect(
-    "mongodb+srv://ajay:YYQgYu4X4beKs2HA@cluster0.2kqjkdb.mongodb.net/mongo_learn?retryWrites=true&w=majority"
-  )
+  .connect(DBConnectionString)
   .then(() => console.log("Connected to Database !"))
   .catch((err) => {
     console.log(err);
@@ -31,6 +33,8 @@ app.use(express.json());
 app.use("/api", router);
 app.use(globalErrorHandling);
 
-app.listen(4000, () => {
-  console.log("Server running at 4k");
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () => {
+  console.log(`Server running at ${PORT}`);
 });
