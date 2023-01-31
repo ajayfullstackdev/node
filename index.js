@@ -4,6 +4,7 @@ import express from "express";
 import mongoose from "mongoose";
 import router from "./routes/productRoutes.js";
 import globalErrorHandling from "./controllers/errorController.js";
+import cors from "cors";
 
 mongoose.set("strictQuery", false);
 
@@ -19,6 +20,7 @@ mongoose
 const app = express();
 
 app.use(express.json());
+app.use(cors());
 
 // app.use((req, res, next) => {
 //   console.log("Middleware 1");

@@ -82,6 +82,50 @@ const deleteProduct = catchErrorAsync(async (req, res) => {
   });
 });
 
+const aggregateProducts = catchErrorAsync(async (req, res) => {
+  const data = await Product.aggregate([
+    {
+      $match: {
+        price: { $lte: 100 },
+      },
+    },
+    {
+      $group: {
+        _id: "$category",
+        count: { $sum: 1 },
+        avgPrice: { $avg: "$price" },
+        maxPrice: { $max: "$price" },
+        minPrice: { $min: "$price" },
+      },
+    },
+    {
+      $addFields: {
+        category: "$_id",
+      },
+    },
+    {
+      $project: {
+        _id: 0,
+      },
+    },
+    {
+      $sort: {
+        avgPrice: -1,
+      },
+    },
+    {
+      $match: {
+        category: { $nin: ["men's clothing", "jewelery"] },
+      },
+    },
+  ]);
+
+  res.json({
+    status: "success",
+    data,
+  });
+});
+
 export {
   insertProduct,
   getProducts,
@@ -89,4 +133,5 @@ export {
   updateProduct,
   updateProductDetails,
   deleteProduct,
+  aggregateProducts,
 };
