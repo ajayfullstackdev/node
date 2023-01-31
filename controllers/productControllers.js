@@ -24,9 +24,12 @@ const getProducts = catchErrorAsync(async (req, res) => {
 
   const data = await queryStringFinal.queryString;
 
+  const totalCount = await Product.find().count();
+
   res.json({
     status: "success",
     length: data.length,
+    totalCount,
     data,
   });
 });
