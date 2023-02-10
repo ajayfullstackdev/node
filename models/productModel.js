@@ -53,11 +53,11 @@ productSchema.post("save", function (doc, next) {
   next();
 });
 
-productSchema.pre(/^find/, function (next) {
-  this.find({ isActive: true });
+// productSchema.pre(/^find/, function (next) {
+//   this.find({ isActive: true });
 
-  next();
-});
+//   next();
+// });
 
 productSchema.virtual("discountPercentage").get(function () {
   return this.price < 10000 ? "50%" : "20%";

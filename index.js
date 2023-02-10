@@ -1,42 +1,66 @@
-// import "./config.js";
+import "./config.js";
 
-// import express from "express";
-// import mongoose from "mongoose";
-// import router from "./routes/productRoutes.js";
-// import globalErrorHandling from "./controllers/errorController.js";
-// import cors from "cors";
+import express from "express";
+import mongoose from "mongoose";
+import router from "./routes/productRoutes.js";
+import globalErrorHandling from "./controllers/errorController.js";
+import cors from "cors";
+import { rateLimit } from "express-rate-limit";
+import morgan from "morgan";
 
-// mongoose.set("strictQuery", false);
+mongoose.set("strictQuery", false);
 
-// const DBConnectionString = process.env.DB_CONNECTION_STRING;
+const DBConnectionString = process.env.DB_CONNECTION_STRING;
 
-// mongoose
-//   .connect(DBConnectionString)
-//   .then(() => console.log("Connected to Database !"))
-//   .catch((err) => {
-//     console.log(err);
-//   });
+mongoose
+  .connect(DBConnectionString)
+  .then(() => console.log("Connected to Database !"))
+  .catch((err) => {
+    console.log(err);
+  });
 
-// const app = express();
+const rateLimiter = rateLimit({
+  max: 3,
+  windowMs: 60000,
+  message: "Too many requests being hit from the same IP address",
+});
 
-// app.use(express.json());
-// app.use(cors());
+const app = express();
 
-// // app.use((req, res, next) => {
-// //   console.log("Middleware 1");
+app.use(rateLimiter);
+app.use(express.json());
+app.use(cors());
+// app.use(morgan("combined")); // meant for logging
 
-// //   next();
-// // });
+app.use(
+  morgan((token, req, res) => {
+    return [
+      `Method Name: ${token.method(req, res)}`,
 
-// // app.use((req, res, next) => {
-// //   console.log("Middleware 2");
-// // });
+      `Status Code: ${token.status(req, res)}`,
 
-// app.use("/api", router);
-// app.use(globalErrorHandling);
+      `User name: ${req.headers.user}`,
 
-// const PORT = process.env.PORT || 5000;
+      `Client name: ${req.headers["client-name"]}`,
+    ];
+  })
+);
 
-// app.listen(PORT, () => {
-//   console.log(`Server running at ${PORT}`);
+// app.use((req, res, next) => {
+//   console.log("Middleware 1");
+
+//   next();
 // });
+
+// app.use((req, res, next) => {
+//   console.log("Middleware 2");
+// });
+
+app.use("/api", router);
+app.use(globalErrorHandling);
+
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () => {
+  console.log(`Server running at ${PORT}`);
+});
