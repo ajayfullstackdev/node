@@ -129,6 +129,17 @@ const aggregateProducts = catchErrorAsync(async (req, res) => {
   });
 });
 
+const productAdmin = async (req, res) => {
+  try {
+    res.json({
+      status: "success",
+      data: "Admin related data",
+    });
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 export {
   insertProduct,
   getProducts,
@@ -137,4 +148,5 @@ export {
   updateProductDetails,
   deleteProduct,
   aggregateProducts,
+  productAdmin,
 };

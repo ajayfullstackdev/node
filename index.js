@@ -7,6 +7,7 @@ import globalErrorHandling from "./controllers/errorController.js";
 import cors from "cors";
 import { rateLimit } from "express-rate-limit";
 import morgan from "morgan";
+import routerAuth from "./routes/userRoutes.js";
 
 mongoose.set("strictQuery", false);
 
@@ -46,17 +47,8 @@ app.use(
   })
 );
 
-// app.use((req, res, next) => {
-//   console.log("Middleware 1");
-
-//   next();
-// });
-
-// app.use((req, res, next) => {
-//   console.log("Middleware 2");
-// });
-
 app.use("/api", router);
+app.use("/auth", routerAuth);
 app.use(globalErrorHandling);
 
 const PORT = process.env.PORT || 5000;
